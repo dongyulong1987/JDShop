@@ -34,7 +34,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
     }
 
     @Override
-    public void onSuccess(BaseBean.ResultBean result1) {
-        System.out.println("++++++++++"+result1.getData().get(0).getAuthor_name());
+    public void onSuccess(BaseBean result1) {
+//        System.out.println("++++++++++"+result1.getData().get(0).getAuthor_name());
     }
 }

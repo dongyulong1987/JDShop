@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.bawie.bawiestore.R;
 
 /**
+ * 商品详情界面
  * 创建人 dongyulong
  * 创建时间 2017/1/4  19:04.
  */

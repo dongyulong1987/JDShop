@@ -28,19 +28,19 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
 
     public void loadHome(String url){
-        String url1 = "http://v.juhe.cn/toutiao/index?type=&key=529973d61dcf0bebef2696c9b4f5fbf7";
-        okHttpClientManager.requestJson2Bean(url1, BaseBean.class, new OkHttpClientManager.RequestJson2BeanCallBack<BaseBean>() {
-            @Override
-            public void success(BaseBean result) {
-                BaseBean.ResultBean result1 = result.getResult();
-                getViews().onSuccess(result1);
-            }
 
-            @Override
-            public void error() {
-
-            }
-        });
+//        okHttpClientManager.requestJson2Bean(url, BaseBean.class, new OkHttpClientManager.RequestJson2BeanCallBack<BaseBean>() {
+//            @Override
+//            public void success(BaseBean result) {
+//                BaseBean.ResultBean result1 = result.getResult();
+//                getViews().onSuccess(result1);
+//            }
+//
+//            @Override
+//            public void error() {
+//
+//            }
+//        });
 
 
     }

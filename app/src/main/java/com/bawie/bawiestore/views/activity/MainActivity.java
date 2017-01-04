@@ -14,6 +14,9 @@ import com.bawie.bawiestore.views.fragment.HomeFragment;
 import com.bawie.bawiestore.views.fragment.MineFragment;
 import com.bawie.bawiestore.views.fragment.ShopFragment;
 
+/**
+ * 主界面
+ */
 
 public class MainActivity extends BaseActivity  {
     private FragmentManager fm;
@@ -26,7 +29,7 @@ public class MainActivity extends BaseActivity  {
         fm = getSupportFragmentManager();
         radioGroup = (RadioGroup) findViewById(R.id.mGroup);
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.mFrame, new CategeryFragment() ).commit();
+        ft.add(R.id.mFrame, new HomeFragment() ).commit();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

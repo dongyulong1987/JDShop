@@ -9,5 +9,5 @@ import com.bawie.bawiestore.model.bean.BaseBean;
  */
 
 public interface HomeView extends BaseViews{
-    void onSuccess( BaseBean.ResultBean result1);
+    void onSuccess( BaseBean result1);
 }
