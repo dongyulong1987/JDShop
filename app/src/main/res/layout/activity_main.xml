@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/mFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"></LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/mGroup"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+
+        >
+
+        <RadioButton
+            android:id="@+id/mHomeBun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/homeselector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center_horizontal"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/mCategryBun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/categeryselector"
+            android:button="@null"
+            android:gravity="center_horizontal"
+            android:padding="10dp" />
+
+        <RadioButton
+            android:id="@+id/mFindBun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/findselector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center_horizontal" />
+
+        <RadioButton
+            android:id="@+id/mShopingBun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shopselector"
+            android:button="@null"
+            android:gravity="center_horizontal" />
+
+        <RadioButton
+            android:id="@+id/mMineBun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/mineselector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center_horizontal" />
+
+
+    </RadioGroup>
+</LinearLayout>
