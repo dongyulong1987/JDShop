@@ -1,24 +1,28 @@
 package com.bawie.bawiestore.views.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.cardemulation.HostNfcFService;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bawie.bawiestore.R;
 import com.bawie.bawiestore.model.bean.CategeryRightTextBean;
+import com.bawie.bawiestore.views.activity.ContentActivity;
 import com.bawie.bawiestore.views.layoutviews.MyGrideView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 分类界面右侧适配器总
  * 创建人 dongyulong
  * 创建时间 2017/1/2  20:26.
  */
@@ -32,8 +36,10 @@ public class CategeryRightAdapter extends RecyclerView.Adapter<CategeryRightAdap
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             notifyDataSetChanged();
+
         }
     };
+
 
     public CategeryRightAdapter(Context context) {
         this.context = context;
@@ -47,11 +53,13 @@ public class CategeryRightAdapter extends RecyclerView.Adapter<CategeryRightAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.textView.setText(list.get(position).getGc_name());
         holder.gridView.setTag(position);
         holder.gridView.setAdapter(AList.get(position));
+
+
     }
 
     @Override
@@ -69,6 +77,7 @@ public class CategeryRightAdapter extends RecyclerView.Adapter<CategeryRightAdap
             v = itemView;
             textView = (TextView) v.findViewById(R.id.cate_right_text);
             gridView = (MyGrideView) v.findViewById(R.id.cate_right_gride);
+
         }
     }
 

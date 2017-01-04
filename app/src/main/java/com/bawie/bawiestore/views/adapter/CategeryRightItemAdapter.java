@@ -1,6 +1,7 @@
 package com.bawie.bawiestore.views.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,11 +9,15 @@ import android.widget.TextView;
 
 import com.bawie.bawiestore.R;
 import com.bawie.bawiestore.model.bean.CategeryRightTextBean;
+import com.bawie.bawiestore.views.activity.ContentActivity;
 import com.bawie.bawiestore.views.interfaces.CategeryRightTextView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
 /**
+ * 分类界面右侧内层grideview适配器
  * 创建人 dongyulong
  * 创建时间 2017/1/3  16:28.
  */
@@ -42,7 +47,7 @@ public class CategeryRightItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder=null;
         if(convertView == null){
             holder = new ViewHolder();
@@ -54,6 +59,17 @@ public class CategeryRightItemAdapter extends BaseAdapter {
         }
         holder.tv.setTag(position);
         holder.tv.setText(list.get(position).getGc_name());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                if(list.get(position).getGc_id().equals("587")){
+                    Intent intent = new Intent(context, ContentActivity.class);
+                    intent.putExtra("gc_id",list.get(position).getGc_id());
+                    context.startActivity(intent);
+
+//                }
+            }
+        });
 
         return convertView;
     }

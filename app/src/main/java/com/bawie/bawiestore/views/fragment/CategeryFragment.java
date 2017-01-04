@@ -1,6 +1,7 @@
 package com.bawie.bawiestore.views.fragment;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,10 @@ import com.bawie.bawiestore.views.adapter.CategeryRightItemAdapter;
 import com.bawie.bawiestore.views.interfaces.CategeryRightTextView;
 import com.bawie.bawiestore.views.interfaces.CategeryView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,7 @@ import java.util.List;
 import static android.R.id.list;
 
 /**
+ * 分类页面fragment
  * 创建人 dongyulong
  * 创建时间 2016/12/28  14:05.
  */
@@ -43,7 +49,6 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
     private CategeryRightItemAdapter adapter1;
     private CategeryRightTextPresenter categeryRightTextPresenter;
     private List<CategeryRightItemAdapter> AList;
-    //    private List<CategeryRightTextBean.DatasBean.ClassListBean> list;
     private List<CategeryRightTextBean.DatasBean.ClassListBean> data;
     private int num = 0;
     private int listNum;
@@ -127,13 +132,6 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
         list = datasBean.getClass_list();
         listNum = list.size();
         categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT+list.get(num).getGc_id(),list);
-
-//        for (int i = 0; i < list.size(); i++) {
-//            String gcId1 = list.get(i).getGc_id();
-//            categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT + gcId1,list);
-//        }
-
-
     }
 
     @Override
@@ -153,5 +151,6 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
             listNum = 0;
         }
     }
+
 
 }
