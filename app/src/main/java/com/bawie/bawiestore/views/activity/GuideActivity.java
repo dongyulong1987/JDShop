@@ -44,4 +44,6 @@ public class GuideActivity extends BaseActivity{
         viewPager.setAdapter(adapter);
 
     }
+
+
 }

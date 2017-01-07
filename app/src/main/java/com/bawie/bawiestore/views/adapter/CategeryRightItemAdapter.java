@@ -2,6 +2,8 @@ package com.bawie.bawiestore.views.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,6 +16,7 @@ import com.bawie.bawiestore.views.interfaces.CategeryRightTextView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +28,21 @@ import java.util.List;
 public class CategeryRightItemAdapter extends BaseAdapter {
     private Context context;
     private List<CategeryRightTextBean.DatasBean.ClassListBean> list;
+//    private Handler handler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            if(msg.what==1){
+//                notifyDataSetChanged();
+//            }
+//        }
+//    };
 
-    public   CategeryRightItemAdapter(Context context, List<CategeryRightTextBean.DatasBean.ClassListBean> data) {
+    //    public   CategeryRightItemAdapter(Context context) {
+//        this.context = context;
+//        list = new ArrayList<>();
+//    }
+    public CategeryRightItemAdapter(Context context, List<CategeryRightTextBean.DatasBean.ClassListBean> data) {
         this.context = context;
         list = data;
     }
@@ -48,26 +64,26 @@ public class CategeryRightItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder holder=null;
-        if(convertView == null){
+        ViewHolder holder = null;
+        if (convertView == null) {
             holder = new ViewHolder();
-            convertView = View.inflate(context, R.layout.cate_right_gride_item_layout,null);
+            convertView = View.inflate(context, R.layout.cate_right_gride_item_layout, null);
             holder.tv = (TextView) convertView.findViewById(R.id.cate_right_gride_item);
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv.setTag(position);
-        holder.tv.setText(list.get(position).getGc_name());
+//        holder.tv.setTag(position);
+        if (list != null&&list.size() > position) {
+            holder.tv.setText(list.get(position).getGc_name());
+        }
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(list.get(position).getGc_id().equals("587")){
-                    Intent intent = new Intent(context, ContentActivity.class);
-                    intent.putExtra("gc_id",list.get(position).getGc_id());
-                    context.startActivity(intent);
+                Intent intent = new Intent(context, ContentActivity.class);
+                intent.putExtra("gc_id", list.get(position).getGc_id());
+                context.startActivity(intent);
 
-//                }
             }
         });
 
@@ -76,6 +92,9 @@ public class CategeryRightItemAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView tv;
-
     }
+//    public void rightitem(List<CategeryRightTextBean.DatasBean.ClassListBean> list){
+//            this.list = list;
+//            handler.sendEmptyMessage(1);
+//    }
 }

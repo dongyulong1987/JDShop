@@ -29,6 +29,7 @@
             android:background="@drawable/textshape"
             />
         <Button
+            android:id="@+id/cate_say_bun"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"

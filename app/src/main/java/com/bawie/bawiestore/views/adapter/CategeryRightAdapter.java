@@ -54,17 +54,17 @@ public class CategeryRightAdapter extends RecyclerView.Adapter<CategeryRightAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-
-        holder.textView.setText(list.get(position).getGc_name());
-        holder.gridView.setTag(position);
-        holder.gridView.setAdapter(AList.get(position));
-
+            holder.textView.setText(list.get(position).getGc_name());
+        if(AList.size()>position) {
+            holder.gridView.setTag(position);
+            holder.gridView.setAdapter(AList.get(position));
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return AList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

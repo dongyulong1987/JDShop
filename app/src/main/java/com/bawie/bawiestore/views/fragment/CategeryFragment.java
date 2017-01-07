@@ -87,6 +87,7 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
         categeryRightTextPresenter.setViews(this);
         rightAdapter = new CategeryRightAdapter(context);
         recyclerView.setAdapter(rightAdapter);
+//        adapter1 = new CategeryRightItemAdapter(context);
     }
 
     @Override
@@ -109,18 +110,19 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
                 class_list.get(position).setFlag(true);
                 adapter.notifyDataSetChanged();
                 //清空适配器集合，否则只能保存一遍数据
-                if (list != null & list.size() > 0) {
-                    list.clear();
-                }
-                if (AList != null & AList.size() > 0) {
-                    AList.clear();
-                }
                 //点击左侧条目请求右侧数据,不能重复请求数据，当点击的条目已被选中时则不能再次请求数据
                 if (positions != position) {
                     gcId = class_list.get(position).getGc_id();
                     categeryRightTextPresenter.loadCategeryRightText(BaseNet.LINK_MOBILE_CLASS_RIGHT + gcId, list);
                     positions = position;
+                    if (list != null && AList != null) {
+                        list.clear();
+                        AList.clear();
+                        num = 0;
+                        listNum = 0;
+                    }
                 }
+
 
             }
         });
@@ -131,24 +133,27 @@ public class CategeryFragment extends BaseFragment implements CategeryView, Cate
     public void onSuccess(CategeryRightTextBean.DatasBean datasBean, List<CategeryRightTextBean.DatasBean.ClassListBean> list) {
         list = datasBean.getClass_list();
         listNum = list.size();
-        categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT+list.get(num).getGc_id(),list);
+        categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT + list.get(num).getGc_id(), list);
     }
 
     @Override
     public void onSuccesses(CategeryRightTextBean.DatasBean datasBean, List<CategeryRightTextBean.DatasBean.ClassListBean> list) {
-        data = datasBean.getClass_list();
-        //GrideView适配器
-        adapter1 = new CategeryRightItemAdapter(context, data);
-        AList.add(adapter1);
-        //num相当于循环的条件这样写可以避免数据混乱
-        num++;
-        if(num<listNum){
-            categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT+list.get(num).getGc_id(),list);
-        }else {
-            //RecycleView适配器
-            rightAdapter.inda((ArrayList<CategeryRightTextBean.DatasBean.ClassListBean>) list, AList);
-            num = 0;
-            listNum = 0;
+        if (AList != null) {
+            data = datasBean.getClass_list();
+            adapter1 = new CategeryRightItemAdapter(context, data);
+            AList.add(adapter1);
+
+            //num相当于循环的条件这样写可以避免数据混乱
+            num++;
+            if (num < listNum) {
+                categeryRightTextPresenter.loadCategeryRightGride(BaseNet.LINK_MOBILE_CLASS_RIGHT + list.get(num).getGc_id(), list);
+            } else {
+                //RecycleView适配器
+                rightAdapter.inda((ArrayList<CategeryRightTextBean.DatasBean.ClassListBean>) list, AList);
+                num = 0;
+                listNum = 0;
+
+            }
         }
     }
 
