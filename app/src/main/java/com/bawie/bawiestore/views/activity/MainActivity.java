@@ -66,6 +66,10 @@ public class MainActivity extends BaseActivity  {
         });
     }
 
+    @Override
+    void initDatass() {
+
+    }
 
 
 }

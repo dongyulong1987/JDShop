@@ -36,6 +36,7 @@ public class CategeryRightTextPresenter extends BasePresenter<CategeryRightTextV
 
     }
     public void loadCategeryRightGride(String url, final List<CategeryRightTextBean.DatasBean.ClassListBean> list) {
+
         okHttpClientManager.requestJson2Bean(url, CategeryRightTextBean.class, new OkHttpClientManager.RequestJson2BeanCallBack<CategeryRightTextBean>() {
 
 

@@ -2,6 +2,7 @@ package com.bawie.bawiestore.views.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,11 +18,12 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
     protected Context context;
-
+    protected SharedPreferences sp;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         context = getActivity();
+        sp = context.getSharedPreferences("configs",Context.MODE_PRIVATE);
     }
 
     @Nullable

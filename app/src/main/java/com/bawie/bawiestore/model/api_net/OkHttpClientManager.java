@@ -62,7 +62,7 @@ public class OkHttpClientManager {
                                         final RequestJson2BeanCallBack<T> callBack){
             //实例化Request
             Request request = new Request.Builder().url(url).build();
-            Log.d("TAG",url);
+
             //请求网络
             mOkHttpClient.newCall(request).enqueue(new Callback() {
                @Override
@@ -155,7 +155,7 @@ public class OkHttpClientManager {
             return request;
         }
 
-        public interface  RequestJson2BeanCallBack <T>{
+        public interface    RequestJson2BeanCallBack <T>{
             void success(T result);
             void error();
         }

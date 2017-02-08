@@ -45,5 +45,8 @@ public class GuideActivity extends BaseActivity{
 
     }
 
+    @Override
+    void initDatass() {
 
+    }
 }

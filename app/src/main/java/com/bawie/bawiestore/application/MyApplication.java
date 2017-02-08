@@ -1,6 +1,7 @@
 package com.bawie.bawiestore.application;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -10,10 +11,11 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  */
 
 public class MyApplication extends Application {
+    protected  Context context;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        context = getApplicationContext();
         Fresco.initialize(this);
     }
 }

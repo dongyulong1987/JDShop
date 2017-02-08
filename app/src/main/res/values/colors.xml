@@ -6,4 +6,6 @@
     <color name="colorTextLeft">#EE5D64</color>
     <color name="colorTextLeftF">#686D78</color>
     <color name="colorWrite">#ffffff</color>
+    <color name="colorGray">#cccccc</color>
+
 </resources>

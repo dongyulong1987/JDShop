@@ -16,7 +16,7 @@ import com.bawie.bawiestore.R;
 
 public class WelcomeActivity extends BaseActivity {
     private TextView textView;
-    private SharedPreferences sp;
+    private SharedPreferences sps;
     private int time = 5;
     private Handler handler = new Handler() {
         @Override
@@ -28,18 +28,20 @@ public class WelcomeActivity extends BaseActivity {
                     handler.sendEmptyMessageDelayed(1, 1000);
                 } else if (time == 0) {
                     time = 5;
-                    sp = getSharedPreferences("config", MODE_PRIVATE);
-                    boolean flag = sp.getBoolean("flag", false);
+                    sps = getSharedPreferences("config", MODE_PRIVATE);
+                    boolean flag = sps.getBoolean("flag", false);
                     //判断是否是第一次，第一次的话为false,否则为true
                     if (flag) {
                         Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     } else {
-                        SharedPreferences.Editor ed = sp.edit();
+                        SharedPreferences.Editor ed = sps.edit();
                         ed.putBoolean("flag", true);
                         ed.commit();
                         Intent intent = new Intent(WelcomeActivity.this, GuideActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
                 }
@@ -52,7 +54,10 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_layout);
         handler.sendEmptyMessageDelayed(1, 1000);
+    }
 
+    @Override
+    void initDatass() {
 
     }
 

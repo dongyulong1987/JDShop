@@ -74,6 +74,11 @@ public class ContentActivity extends BaseActivity implements ContentView{
         });
 
     }
+
+    @Override
+    void initDatass() {
+
+    }
     //调P层请求网络
 
    public  void initData() {
